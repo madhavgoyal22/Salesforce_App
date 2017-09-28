@@ -1,0 +1,15 @@
+trigger CreateTask on Lead (after insert)
+{
+	List<Task> lisTask= new List<Task>();
+	for(Lead l1 :trigger.new)
+	{
+		Task t1 = new Task();
+		t1.OwnerId = L1.OwnerId;
+		t1.Subject = 'Send Letter';
+		t1.Status = 'In Progress';
+		t1.Priority = 'Normal';
+		lisTask.add(t1);
+	}
+	if(lisTask.size() > 0)
+		insert lisTask; 
+}
